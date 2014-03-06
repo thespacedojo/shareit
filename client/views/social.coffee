@@ -10,11 +10,11 @@ Template.shareit.rendered = ->
   $('<meta>', { property: 'og:type', content: 'article' }).appendTo 'head'
   $('<meta>', { property: 'og:site_name', content: location.hostname }).appendTo 'head'
   $('<meta>', { property: 'og:url', content: location.origin + location.pathname }).appendTo 'head'
-  $('<meta>', { property: 'og:title', content: "#{@title}" }).appendTo 'head'
-  $('<meta>', { property: 'og:description', content: @excerpt }).appendTo 'head'
+  $('<meta>', { property: 'og:title', content: "#{@data.title}" }).appendTo 'head'
+  $('<meta>', { property: 'og:description', content: @data.excerpt }).appendTo 'head'
 
-  if @thumbnail
-    img = @thumbnail()
+  if @data.thumbnail
+    img = @data.thumbnail()
     if img
       if not /^http(s?):\/\/+/.test(img)
         img = location.origin + img
@@ -28,14 +28,14 @@ Template.shareit.rendered = ->
   # What should go here?
   #$('<meta>', { property: 'twitter:site', content: '' }).appendTo 'head'
 
-  if @author
-    author = @author()
+  if @data.author
+    author = @data.author()
   if author and author.profile and author.profile.twitter
     $('<meta>', { property: 'twitter:creator', content: author.profile.twitter }).appendTo 'head'
 
   $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
-  $('<meta>', { property: 'twitter:title', content: "#{@title}" }).appendTo 'head'
-  $('<meta>', { property: 'twitter:description', content: @excerpt }).appendTo 'head'
+  $('<meta>', { property: 'twitter:title', content: "#{@data.title}" }).appendTo 'head'
+  $('<meta>', { property: 'twitter:description', content: @data.excerpt }).appendTo 'head'
   $('<meta>', { property: 'twitter:image:src', content: img }).appendTo 'head'
 
   #
@@ -44,7 +44,7 @@ Template.shareit.rendered = ->
 
   base = "https://twitter.com/intent/tweet"
   url = encodeURIComponent location.origin + location.pathname
-  text = encodeURIComponent @title
+  text = encodeURIComponent @data.title
   href = base + "?url=" + url + "&text=" + text
 
   if author and author.profile and author.profile.twitter
@@ -58,8 +58,8 @@ Template.shareit.rendered = ->
 
   base = "https://www.facebook.com/sharer/sharer.php"
   url = encodeURIComponent location.origin + location.pathname
-  title = encodeURIComponent @title
-  summary = encodeURIComponent @excerpt
+  title = encodeURIComponent @data.title
+  summary = encodeURIComponent @data.excerpt
   href = base + "?s=100&p[url]=" + url + "&p[title]=" + title + "&p[summary]=" + summary
 
   if img

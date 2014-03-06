@@ -1,5 +1,5 @@
 Handlebars.registerHelper "shareit", ->
-  new Handlebars.SafeString(Template.shareit())
+  new Handlebars.SafeString(Template.shareit(this))
 
 Meteor.startup ->
 
