@@ -43,7 +43,7 @@ Template.shareit.rendered = ->
   #
 
   preferred_url = @data.url || location.origin + location.pathname
-  url = encodeURIComponent perferred_url
+  url = encodeURIComponent preferred_url
 
   base = "https://twitter.com/intent/tweet"
   text = encodeURIComponent @data.title

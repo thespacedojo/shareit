@@ -3,7 +3,7 @@
   "description": "A meteorite package that makes social sharing easy",
   "homepage": "https://github.com/BeDifferential/shareit",
   "author": "Differential (http://differential.io)",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "git": "https://github.com/BeDifferential/shareit.git",
   "packages": {
     "phantomjs": {}
