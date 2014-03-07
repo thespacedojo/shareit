@@ -42,8 +42,10 @@ Template.shareit.rendered = ->
   # Twitter share button
   #
 
+  preferred_url = @data.url || location.origin + location.pathname
+  url = encodeURIComponent perferred_url
+
   base = "https://twitter.com/intent/tweet"
-  url = encodeURIComponent location.origin + location.pathname
   text = encodeURIComponent @data.title
   href = base + "?url=" + url + "&text=" + text
 
@@ -57,7 +59,6 @@ Template.shareit.rendered = ->
   #
 
   base = "https://www.facebook.com/sharer/sharer.php"
-  url = encodeURIComponent location.origin + location.pathname
   title = encodeURIComponent @data.title
   summary = encodeURIComponent @data.excerpt
   href = base + "?s=100&p[url]=" + url + "&p[title]=" + title + "&p[summary]=" + summary
