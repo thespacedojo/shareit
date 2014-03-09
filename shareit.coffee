@@ -1,3 +1,7 @@
+if Package.ui
+  ->
+    Handlebars = Package.ui.Handlebars
+
 Handlebars.registerHelper "shareit", ->
   new Handlebars.SafeString(Template.shareit(this))
 
