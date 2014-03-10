@@ -1,9 +1,9 @@
 if Package.ui
-  ->
-    Handlebars = Package.ui.Handlebars
-
-Handlebars.registerHelper "shareit", ->
-  new Handlebars.SafeString(Template.shareit(this))
+  Package.ui.Handlebars.registerHelper "shareit", ->
+    new Handlebars.SafeString(Template.shareit(this))
+else
+  Handlebars.registerHelper "shareit", ->
+    new Handlebars.SafeString(Template.shareit(this))
 
 Meteor.startup ->
 
