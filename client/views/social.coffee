@@ -1,5 +1,5 @@
 Template.shareit.rendered = ->
-
+  return unless @data
   $('meta[property^="og:"]').remove()
   $('meta[property^="twitter:"]').remove()
 
@@ -52,7 +52,7 @@ Template.shareit.rendered = ->
   if author and author.profile and author.profile.twitter
     href += "&via=" + author.profile.twitter
 
-  $(".tw-share").attr "href", href
+  @$(".tw-share").attr "href", href
 
   #
   # Facebook share button
@@ -66,4 +66,4 @@ Template.shareit.rendered = ->
   if img
     href += "&p[images][0]=" + encodeURIComponent img
 
-  $(".fb-share").attr "href", href
+  @$(".fb-share").attr "href", href
