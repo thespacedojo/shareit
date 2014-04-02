@@ -1,10 +1,3 @@
-if Package.ui
-  Package.ui.Handlebars.registerHelper "shareit", ->
-    new Handlebars.SafeString(Template.shareit(this))
-else
-  Handlebars.registerHelper "shareit", ->
-    new Handlebars.SafeString(Template.shareit(this))
-
 Meteor.startup ->
 
   # Twitter
