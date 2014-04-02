@@ -3,7 +3,7 @@ Package.describe({
 });
 
 Package.on_use(function(api) {
-  api.use(['handlebars', 'coffeescript', 'less', 'templating', 'underscore'], 'client');
+  api.use(['coffeescript', 'less', 'templating', 'underscore'], 'client');
 
 
   api.imply('spiderable', ['client', 'server']);
