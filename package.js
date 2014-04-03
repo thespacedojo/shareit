@@ -19,7 +19,6 @@ Package.on_use(function(api) {
 
 Package.on_test(function (api) {
   api.use(['tinytest',
-    'handlebars',
     'test-helpers',
     'templating',
     'coffeescript'
