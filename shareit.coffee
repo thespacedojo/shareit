@@ -26,9 +26,3 @@ Meteor.startup ->
   js.async = true
   js.src = "//connect.facebook.net/en_US/all.js"
   ref.parentNode.insertBefore js, ref
-
-  # Listen for any 'Load More' clicks
-  $('body').on 'click', '.load-more', (e) ->
-    e.preventDefault()
-    if Session.get 'postLimit'
-      Session.set 'postLimit', Session.get('postLimit') + Blog.settings.pageSize
