@@ -17,9 +17,10 @@ We've built social sharing buttons a few times and decided it was time to extrac
 ### Usage
 
 In your template insert the following to get all social media buttons:
-{{special = "> shareit"}}
+
+{% assign special = '{{> shareit}}' %}
 ```
-{{> special }}
+{{ special }}
 ```
 
 
