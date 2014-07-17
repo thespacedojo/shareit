@@ -15,7 +15,9 @@ We've built social sharing buttons a few times and decided it was time to extrac
 * Expand to support other social platforms besides just twitter & facebook, in a configurable way
 
 ### Usage
+
 In your template insert the following to get all social media buttons:
+
 ```
 {{> shareit }}
 ```
