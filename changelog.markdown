@@ -1,6 +1,6 @@
 ---
 layout: default
-username: BeDifferential
+username: Differential
 repo: shareit
 version: 0.0.1
 desc: A meteorite package that makes social sharing easy
