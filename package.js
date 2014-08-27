@@ -1,13 +1,15 @@
 Package.describe({
-  summary: "A meteorite package that makes social sharing easy"
+  summary: 'A meteorite package that makes social sharing easy',
+  git: 'https://github.com/Differential/shareit',
+  version: '0.1.0'
 });
 
-Package.on_use(function(api) {
+Package.onUse(function(api) {
   api.use(['coffeescript', 'less', 'templating', 'underscore'], 'client');
 
 
   api.imply('spiderable', ['client', 'server']);
-  api.add_files([
+  api.addFiles([
     'shareit.coffee',
     'client/views/social.html',
     'client/views/social.coffee',
@@ -17,7 +19,7 @@ Package.on_use(function(api) {
   //api.export('Shareit', 'client');
 });
 
-Package.on_test(function (api) {
+Package.onTest(function (api) {
   api.use(['tinytest',
     'test-helpers',
     'templating',
@@ -25,7 +27,7 @@ Package.on_test(function (api) {
     ])
     api.use('shareit')
 
-  api.add_files([
+  api.addFiles([
     'tests/client.html',
     'tests/client.js'
     ], 'client')
