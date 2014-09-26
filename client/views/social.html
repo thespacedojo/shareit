@@ -1,6 +1,11 @@
 <template name="shareit">
 <div class="share-buttons">
-  <a target="_blank" class="btn btn-facebook fb-share" href="#"><i class="fa fa-facebook"></i> Share on Facebook </a>
-  <a class="btn btn-twitter tw-share" href="#"><i class="fa fa-twitter"></i> Share on Twitter </a>
+  {{#if useFB}}
+    {{> shareit_fb}}
+  {{/if}}
+
+  {{#if useTwitter}}
+    {{> shareit_twitter}}
+  {{/if}}
 </div>
 </template>

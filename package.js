@@ -13,7 +13,11 @@ Package.onUse(function(api) {
     'shareit.coffee',
     'client/views/social.html',
     'client/views/social.coffee',
-    'client/views/social.less'
+    'client/views/social.less',
+    'client/views/facebook/facebook.html',
+    'client/views/facebook/facebook.coffee',
+    'client/views/twitter/twitter.html',
+    'client/views/twitter/twitter.coffee'
   ], 'client');
 
   //api.export('Shareit', 'client');

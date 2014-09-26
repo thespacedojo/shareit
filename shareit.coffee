@@ -1,3 +1,12 @@
+@ShareIt = {
+  settings: {
+    useFB: true,
+    useTwitter: true
+  }
+  configure: (hash) ->
+    @settings = $.extend(@settings, hash)
+}
+
 Meteor.startup ->
 
   # Twitter
