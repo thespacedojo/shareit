@@ -36,3 +36,15 @@ Template.shareit_fb.rendered = ->
     href += "&p[images][0]=" + encodeURIComponent img
 
   @$(".fb-share").attr "href", href
+
+Template.shareit_fb.helpers({
+    useLarge: () ->
+      ShareIt.useLargeButtons()
+
+    useSmall: () ->
+      ShareIt.useSmallButtons()
+
+    useResponsive: () ->
+      ShareIt.useResponsive()
+
+})
