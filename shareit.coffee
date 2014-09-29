@@ -1,7 +1,8 @@
 @ShareIt = {
   settings: {
     useFB: true,
-    useTwitter: true
+    useTwitter: true,
+    useGoogle: true
   }
   configure: (hash) ->
     @settings = $.extend(@settings, hash)

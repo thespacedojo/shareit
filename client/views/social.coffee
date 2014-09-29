@@ -4,4 +4,7 @@ Template.shareit.helpers({
 
     useTwitter: () ->
       ShareIt.settings.useTwitter
+
+    useGoogle: () ->
+      ShareIt.settings.useGoogle
 })
