@@ -1,6 +1,6 @@
 @ShareIt = {
   settings: {
-    buttons: 'large',
+    buttons: 'responsive',
     useFB: true,
     useTwitter: true,
     useGoogle: true
