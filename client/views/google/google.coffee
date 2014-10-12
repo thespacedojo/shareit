@@ -8,3 +8,14 @@ Template.shareit_google.rendered = () ->
   preferred_url = @data.url || location.origin + location.pathname
   href = "https://plus.google.com/share?url=#{preferred_url}"
   @$(".google-share").attr "href", href
+
+Template.shareit_google.helpers({
+    useLarge: () ->
+      ShareIt.useLargeButtons()
+
+    useSmall: () ->
+      ShareIt.useSmallButtons()
+
+    useResponsive: () ->
+      ShareIt.useResponsive()
+})

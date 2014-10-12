@@ -1,3 +1,8 @@
 <template name="shareit_fb">
-  <a target="_blank" class="btn btn-facebook fb-share" href="#"><i class="fa fa-facebook"></i> Share on Facebook </a>
+{{#if useLarge}}
+  <a target="_blank" class="large btn btn-facebook fb-share {{#if useResponsive}}responsive{{/if}}" href="#"><i class="fa fa-facebook"></i> Share on Facebook </a>
+{{/if}}
+{{#if useSmall}}
+  <a target="_blank" class="small btn-facebook fb-share {{#if useResponsive}}responsive{{/if}}" href="#"><i class="fa fa-facebook"></i></a>
+{{/if}}
 </template>

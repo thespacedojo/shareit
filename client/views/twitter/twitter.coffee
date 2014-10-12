@@ -41,3 +41,15 @@ Template.shareit_twitter.rendered = ->
     href += "&via=" + author.profile.twitter
 
   @$(".tw-share").attr "href", href
+
+
+Template.shareit_twitter.helpers({
+    useLarge: () ->
+      ShareIt.useLargeButtons()
+
+    useSmall: () ->
+      ShareIt.useSmallButtons()
+
+    useResponsive: () ->
+      ShareIt.useResponsive()
+})

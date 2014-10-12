@@ -3,7 +3,7 @@
     font-size: 16px;
   }
 
-  .fb-share {
+  .btn-facebook {
     background: #3B5998;
     color: #fff;
   }
@@ -13,8 +13,25 @@
     background: #4099FF;
   }
 
-  .google-share {
+  .btn-google {
     color: #fff;
     background: #D34836;
+  }
+
+  a.small {
+    padding: 2px 4px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 2px;
+    min-width: 15px;
+
+    &.responsive {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    a.small.responsive { display: inline-block; }
+    a.large.responsive { display: none; }
   }
 }

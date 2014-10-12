@@ -1,11 +1,20 @@
 @ShareIt = {
   settings: {
+    buttons: 'responsive',
     useFB: true,
     useTwitter: true,
     useGoogle: true
   }
   configure: (hash) ->
     @settings = $.extend(@settings, hash)
+  useLargeButtons: () ->
+    ShareIt.settings.buttons == 'large' or
+    ShareIt.settings.buttons == 'responsive'
+  useSmallButtons: () ->
+    ShareIt.settings.buttons == 'small' or
+    ShareIt.settings.buttons == 'responsive'
+  useResponsive: () ->
+    ShareIt.settings.buttons == 'responsive'
 }
 
 Meteor.startup ->
