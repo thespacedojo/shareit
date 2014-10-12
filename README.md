@@ -6,5 +6,5 @@ We've built social sharing buttons a few times and decided it was time to extrac
 * Support social sharing buttons with bootstrap-3 and font-awesome
 * Expand to support other social platforms besides just twitter & facebook, in a configurable way
 
-See more in our [documentation](http://github.differential.io/shareit/)
+See more in our [documentation](http://meteorjs.club/shareit/)
 
