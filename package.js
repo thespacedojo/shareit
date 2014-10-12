@@ -5,6 +5,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
+  api.versionsFrom("METEOR@0.9.0");
   api.use(['coffeescript', 'less', 'templating', 'underscore'], 'client');
 
 
@@ -25,16 +26,16 @@ Package.onUse(function(api) {
   //api.export('Shareit', 'client');
 });
 
-Package.onTest(function (api) {
-  api.use(['tinytest',
-    'test-helpers',
-    'templating',
-    'coffeescript'
-    ])
-    api.use('shareit')
-
-  api.addFiles([
-    'tests/client.html',
-    'tests/client.js'
-    ], 'client')
-})
+// Package.onTest(function (api) {
+//   api.use(['tinytest',
+//     'test-helpers',
+//     'templating',
+//     'coffeescript'
+//     ])
+//     api.use('shareit')
+// 
+//   api.addFiles([
+//     'tests/client.html',
+//     'tests/client.js'
+//     ], 'client')
+// })
