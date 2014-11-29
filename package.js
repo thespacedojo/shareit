@@ -1,7 +1,7 @@
 Package.describe({
   summary: 'A meteorite package that makes social sharing easy',
   git: 'https://github.com/Differential/shareit',
-  version: '0.1.0'
+  version: '0.2.1'
 });
 
 Package.onUse(function(api) {
@@ -23,7 +23,7 @@ Package.onUse(function(api) {
     'client/views/google/google.coffee'
   ], 'client');
 
-  //api.export('Shareit', 'client');
+  api.export('ShareIt', 'client');
 });
 
 // Package.onTest(function (api) {
