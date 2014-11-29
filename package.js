@@ -33,7 +33,7 @@ Package.onUse(function(api) {
 //     'coffeescript'
 //     ])
 //     api.use('shareit')
-// 
+//
 //   api.addFiles([
 //     'tests/client.html',
 //     'tests/client.js'
