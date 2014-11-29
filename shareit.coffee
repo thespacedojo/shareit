@@ -1,4 +1,4 @@
-@ShareIt = {
+ShareIt = {
   settings: {
     buttons: 'responsive',
     useFB: true,
@@ -16,6 +16,8 @@
   useResponsive: () ->
     ShareIt.settings.buttons == 'responsive'
 }
+# CoffeeScript weirdness, can't assign directly?
+@ShareIt = ShareIt;
 
 Meteor.startup ->
 
