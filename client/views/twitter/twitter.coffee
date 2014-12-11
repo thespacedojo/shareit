@@ -17,13 +17,15 @@ Template.shareit_twitter.rendered = ->
   #$('<meta>', { property: 'twitter:site', content: '' }).appendTo 'head'
 
   if @data.author
-    author = @data.author()
+    author = @data.author() if typeof(@data.author) is 'function'
+    author ||= @data.author
   if author and author.profile and author.profile.twitter
     $('<meta>', { property: 'twitter:creator', content: author.profile.twitter }).appendTo 'head'
 
+  description = @data.excerpt || @data.description || @data.summary
   $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
   $('<meta>', { property: 'twitter:title', content: "#{@data.title}" }).appendTo 'head'
-  $('<meta>', { property: 'twitter:description', content: @data.excerpt }).appendTo 'head'
+  $('<meta>', { property: 'twitter:description', content: description }).appendTo 'head'
   $('<meta>', { property: 'twitter:image:src', content: img }).appendTo 'head'
 
   #
@@ -43,13 +45,4 @@ Template.shareit_twitter.rendered = ->
   @$(".tw-share").attr "href", href
 
 
-Template.shareit_twitter.helpers({
-    useLarge: () ->
-      ShareIt.useLargeButtons()
-
-    useSmall: () ->
-      ShareIt.useSmallButtons()
-
-    useResponsive: () ->
-      ShareIt.useResponsive()
-})
+Template.shareit_twitter.helpers(ShareIt.helpers)

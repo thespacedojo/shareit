@@ -6,11 +6,13 @@ Template.shareit_fb.rendered = ->
   # OpenGraph tags
   #
 
+  description = @data.excerpt || @data.description || @data.summary
+
   $('<meta>', { property: 'og:type', content: 'article' }).appendTo 'head'
   $('<meta>', { property: 'og:site_name', content: location.hostname }).appendTo 'head'
   $('<meta>', { property: 'og:url', content: location.origin + location.pathname }).appendTo 'head'
   $('<meta>', { property: 'og:title', content: "#{@data.title}" }).appendTo 'head'
-  $('<meta>', { property: 'og:description', content: @data.excerpt }).appendTo 'head'
+  $('<meta>', { property: 'og:description', content: description }).appendTo 'head'
 
   if @data.thumbnail
     img = @data.thumbnail()
@@ -29,7 +31,7 @@ Template.shareit_fb.rendered = ->
 
   base = "https://www.facebook.com/sharer/sharer.php"
   title = encodeURIComponent @data.title
-  summary = encodeURIComponent @data.excerpt
+  summary = encodeURIComponent description
   href = base + "?s=100&p[url]=" + url + "&p[title]=" + title + "&p[summary]=" + summary
 
   if img
@@ -37,14 +39,4 @@ Template.shareit_fb.rendered = ->
 
   @$(".fb-share").attr "href", href
 
-Template.shareit_fb.helpers({
-    useLarge: () ->
-      ShareIt.useLargeButtons()
-
-    useSmall: () ->
-      ShareIt.useSmallButtons()
-
-    useResponsive: () ->
-      ShareIt.useResponsive()
-
-})
+Template.shareit_fb.helpers(ShareIt.helpers)

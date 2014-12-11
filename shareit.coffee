@@ -1,23 +1,26 @@
 ShareIt = {
-  settings: {
-    buttons: 'responsive',
-    useFB: true,
-    useTwitter: true,
+  settings:
+    buttons: 'responsive'
+    useFB: true
+    useTwitter: true
     useGoogle: true
-  }
+    classes: "large btn"
+    iconOnly: false
+    applyColors: true
+
   configure: (hash) ->
     @settings = $.extend(@settings, hash)
-  useLargeButtons: () ->
-    ShareIt.settings.buttons == 'large' or
-    ShareIt.settings.buttons == 'responsive'
-  useSmallButtons: () ->
-    ShareIt.settings.buttons == 'small' or
-    ShareIt.settings.buttons == 'responsive'
-  useResponsive: () ->
-    ShareIt.settings.buttons == 'responsive'
+  helpers: {
+    classes: () ->
+      ShareIt.settings.classes
+    showText: () ->
+      !ShareIt.settings.iconOnly
+    applyColors: () ->
+      ShareIt.settings.applyColors
+  }
 }
-# CoffeeScript weirdness, can't assign directly?
-@ShareIt = ShareIt;
+
+@ShareIt = ShareIt
 
 Meteor.startup ->
 

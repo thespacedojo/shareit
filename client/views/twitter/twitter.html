@@ -1,12 +1,5 @@
 <template name="shareit_twitter">
-{{#if useLarge}}
-  <a class="large btn btn-twitter tw-share {{#if useResponsive}}responsive{{/if}}" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
-    <i class="fa fa-twitter"></i> Share on Twitter
+  <a class="{{classes}}{{#if applyColors}} shareit-twitter-colors{{/if}} tw-share" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
+    <i class="fa fa-twitter"></i>{{#if showText}} Share on Twitter{{/if}}
   </a>
-{{/if}}
-{{#if useSmall}}
-  <a class="small tw-share {{#if useResponsive}}responsive{{/if}}" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
-    <i class="fa fa-twitter"></i>
-  </a>
-{{/if}}
 </template>

@@ -1,10 +1,9 @@
-Template.shareit.helpers({
-    useFB: () ->
-      ShareIt.settings.useFB
+Template.shareit.helpers
+  useFB: () ->
+    ShareIt.settings.useFB
 
-    useTwitter: () ->
-      ShareIt.settings.useTwitter
+  useTwitter: () ->
+    ShareIt.settings.useTwitter
 
-    useGoogle: () ->
-      ShareIt.settings.useGoogle
-})
+  useGoogle: () ->
+    ShareIt.settings.useGoogle
