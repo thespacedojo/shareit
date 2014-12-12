@@ -1,9 +1,9 @@
 # Share it
 
-We've built social sharing buttons a few times and decided it was time to extract it to a package!  The goal of this package is to do a few things:
+I've built social sharing buttons a few times and decided it was time to extract it to a package!  The goal of this package is to do a few things:
 
 * Render appropriate meta tags for Facebook/OG and Twitter (via spiderable)
-* Support social sharing buttons with bootstrap-3 and font-awesome
+* Support social sharing buttons with bootstrap-3 (default) and font-awesome
 * Expand to support other social platforms besides just twitter & facebook, in a configurable way
 
 See also our [project home](http://meteorjs.club/shareit/) (WIP).
@@ -18,8 +18,8 @@ Simply put `{{>shareit}}` in your template.  We use the following keys in your
 **current data context** (more on this below):
 
 * `title`
-* `author` - expects a function (see below).  Used only for twitter.  If an object is returned, and `author.profile.twitter` exists, this value will be used instead.
-* `excerpt` - `description` in FB and Twitter
+* `author` - expects a string or a function (see below).  The function is used only for twitter.  If an object is returned, and `author.profile.twitter` exists, this value will be used instead.
+* `excerpt` or `description` or `summary`  in FB and Twitter
 
 and optionally:
 
@@ -48,22 +48,22 @@ enough to get everything it needs from the other tags.
 
 ### Regarding the Data Context
 
-`{{shareit}}` will work anywhere in a template where `{{title}}`, `{{excerpt}}`,
+`{{> shareit}}` will work anywhere in a template where `{{title}}`, `{{excerpt}}`,
 etc would work.  The source of the data context would be the `data()` function
 for a route in `iron:router`, or from a surrounding `{{#with}}` tag.  (You can
-use `{{each}}` too, but only the last rendered block will be used to set the
-page meta tags; TODO, buttonsOnly attribute, see roadmap):
+use `{{#each}}` too, but only the last rendered block will be used to set the
+page meta tags:
 
 ```handlebars
 <template name="article">
   <h1>{{title}}</h1>
-  {{shareit}}
+  {{> shareit}}
 </template>
 ```
 
 Just like any Meteor template/component, you can override the data context
 for a single component by specifying a single non-key argument.  e.g.
-`{{shareit shareData}}` will get `title` from `{{shareData.title}}`, etc.
+`{{> shareit shareData}}` will get `title` from `{{shareData.title}}`, etc.
 shareData can itself be a key in the current data context, or a helper
 function of the current template, e.g.:
 
@@ -100,24 +100,25 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
 
 ```js
   ShareIt.configure({
-    useFB: true,      // boolean (default: true)
-                      // Whether to show the Facebook button
-    useTwitter: true, // boolean (default: true)
-                      // Whether to show the Twitter button
-    useGoogle: true,  // boolean (default: true)
-                      // Whether to show the Google+ button
-    buttons: 'large'  // string ('large' (default), 'small', 'responsive')
-                      // Whether to use large or small buttons or both in a responsive manner.
+    useFB: true,          // boolean (default: true)
+                          // Whether to show the Facebook button
+    useTwitter: true,     // boolean (default: true)
+                          // Whether to show the Twitter button
+    useGoogle: true,      // boolean (default: true)
+                          // Whether to show the Google+ button
+    classes: "large btn", // string (default: 'large btn')
+                          // The classes that will be placed on the sharing buttons, bootstrap by default.
+    iconOnly: false,      // boolean (default: false)
+                          // Don't put text on the sharing buttons
+    applyColors: true     // boolean (default: true)
+                          // apply classes to inherit each social networks background color
   });
 ```
 
 ## Roadmap
 
-* Support text OR functions for `author`, `thumbnail`
+* Support text OR functions for `thumbnail`
 * Rename `thumbnail` to image with backwards compatilility (FB suggestion of 1200x630 is not a thumbnail :))
-* Support intuitive aliases `desc` and `description` for `excerpt`
 * Twitter: use [summary](https://dev.twitter.com/cards/types/summary) for `thumbnail`, and [summary_large_image](https://dev.twitter.com/cards/types/summary-large-image)
 for `image`
 * Google+ tags ([snippets](https://developers.google.com/+/web/snippet/))
-* Refactor some repetative code
-* `buttonsOnly` attribute, for use inside of e.g. `{{#each}}`.
