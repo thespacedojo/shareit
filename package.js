@@ -1,6 +1,6 @@
 Package.describe({
-  summary: 'A meteorite package that makes social sharing easy',
-  git: 'https://github.com/Differential/shareit',
+  summary: 'A meteor package that makes social sharing easy',
+  git: 'https://github.com/meteorclub/shareit',
   version: '0.3.0',
   name: "joshowens:shareit"
 });
