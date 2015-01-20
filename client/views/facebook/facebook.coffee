@@ -1,5 +1,6 @@
 Template.shareit_fb.rendered = ->
   return unless @data
+
   $('meta[property^="og:"]').remove()
 
   #
