@@ -27,16 +27,16 @@ Package.onUse(function(api) {
   api.export('ShareIt', 'client');
 });
 
-// Package.onTest(function (api) {
-//   api.use(['tinytest',
-//     'test-helpers',
-//     'templating',
-//     'coffeescript'
-//     ])
-//     api.use('shareit')
-//
-//   api.addFiles([
-//     'tests/client.html',
-//     'tests/client.js'
-//     ], 'client')
-// })
+Package.onTest(function (api) {
+  api.use(['tinytest',
+    'test-helpers',
+    'templating',
+    'coffeescript'
+    ])
+    api.use('joshowens:shareit')
+
+  api.addFiles([
+    'tests/client.html',
+    'tests/client.js'
+    ], 'client')
+})

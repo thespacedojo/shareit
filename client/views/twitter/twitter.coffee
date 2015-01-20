@@ -3,7 +3,10 @@ Template.shareit_twitter.rendered = ->
   $('meta[property^="twitter:"]').remove()
 
   if @data.thumbnail
-    img = @data.thumbnail()
+    if typeof @data.thumbnail == "function"
+      img = @data.thumbnail()
+    else
+      img = @data.thumbnail
     if img
       if not /^http(s?):\/\/+/.test(img)
         img = location.origin + img

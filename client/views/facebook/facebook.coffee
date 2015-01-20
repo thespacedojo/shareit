@@ -15,7 +15,10 @@ Template.shareit_fb.rendered = ->
   $('<meta>', { property: 'og:description', content: description }).appendTo 'head'
 
   if @data.thumbnail
-    img = @data.thumbnail()
+    if typeof @data.thumbnail == "function"
+      img = @data.thumbnail()
+    else
+      img = @data.thumbnail
     if img
       if not /^http(s?):\/\/+/.test(img)
         img = location.origin + img

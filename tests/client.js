@@ -1,12 +1,5 @@
-Template.test_helper_shareit_with_data.dataContext = function() {
-  return {title: 'Test title'}
-}
+dataContext = {title: 'Test title', author: 'My Uncle', thumbnail: 'TestPath'};
 
-renderToDiv = function(comp) {
-  div = document.createElement("DIV");
-  UI.materialize(comp, div);
-  return div;
-};
 
 Tinytest.add("ShareIt - {{> shareit}} template renders", function(test) {
   div = renderToDiv(Template.test_helper_shareit)
@@ -17,15 +10,17 @@ Tinytest.add("ShareIt - {{> shareit}} template renders", function(test) {
 
 Tinytest.add("ShareIt - {{> shareit}} template doesn't throw an exception from the rendered function", function(test) {
   try {
-    Template.shareit.rendered()
+    Template.shareit_fb.rendered()
   } catch (e) {
     console.log(e)
-    test.fail('The rendered function should not throw an error without data.')
+    test.fail(e)
   }
 });
 
+
 Tinytest.addAsync("ShareIt - {{> shareit}} template renders valid share links", function(test, done) {
-  div = renderToDiv(Template.test_helper_shareit_with_data)
+  ShareIt.settings.useFB = true;
+  div = renderToDiv(Template.test_helper_shareit, dataContext)
   // This feels like a punt, should investigate more
   Meteor.setTimeout(function() {
     html = div.innerHTML
