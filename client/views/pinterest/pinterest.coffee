@@ -11,6 +11,6 @@ Template.shareit_pinterest.rendered = ->
 Template.shareit_pinterest.events
     'click a': (event, template) ->
         event.preventDefault()
-        window.open $(template.find('.pinterest-share')).attr('href'), 'pinterest_window', 'width=750, height=320'
+        window.open $(template.find('.pinterest-share')).attr('href'), 'pinterest_window', 'width=750, height=650'
 
 Template.shareit_pinterest.helpers(ShareIt.helpers)
