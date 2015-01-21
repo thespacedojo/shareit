@@ -1,4 +1,4 @@
-Template.shareit_google.rendered = () ->
+Template.shareit_googleplus.rendered = () ->
   return unless @data
 
   #
@@ -7,6 +7,6 @@ Template.shareit_google.rendered = () ->
 
   preferred_url = @data.url || location.origin + location.pathname
   href = "https://plus.google.com/share?url=#{preferred_url}"
-  @$(".google-share").attr "href", href
+  @$(".googleplus-share").attr "href", href
 
-Template.shareit_google.helpers(ShareIt.helpers)
+Template.shareit_googleplus.helpers(ShareIt.helpers)

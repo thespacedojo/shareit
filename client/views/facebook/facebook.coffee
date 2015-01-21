@@ -1,4 +1,4 @@
-Template.shareit_fb.rendered = ->
+Template.shareit_facebook.rendered = ->
   return unless @data
 
   $('meta[property^="og:"]').remove()
@@ -43,4 +43,4 @@ Template.shareit_fb.rendered = ->
 
   @$(".fb-share").attr "href", href
 
-Template.shareit_fb.helpers(ShareIt.helpers)
+Template.shareit_facebook.helpers(ShareIt.helpers)

@@ -1,15 +1,7 @@
 <template name="shareit">
 <div class="share-buttons">
-  {{#if useFB}}
-    {{> shareit_fb}}
-  {{/if}}
-
-  {{#if useTwitter}}
-    {{> shareit_twitter}}
-  {{/if}}
-
-  {{#if useGoogle}}
-    {{> shareit_google}}
-  {{/if}}
+  {{#each siteTemplates}}
+    {{> UI.dynamic template=this data=..}}
+  {{/each}}
 </div>
 </template>

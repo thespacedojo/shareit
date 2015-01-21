@@ -1,9 +1,6 @@
 Template.shareit.helpers
-  useFB: () ->
-    ShareIt.settings.useFB
-
-  useTwitter: () ->
-    ShareIt.settings.useTwitter
-
-  useGoogle: () ->
-    ShareIt.settings.useGoogle
+  siteTemplates: () ->
+    templates = []
+    for site in ShareIt.settings.sites
+        templates.push 'shareit_' + site
+    templates

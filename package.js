@@ -7,9 +7,8 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom("METEOR@0.9.0");
-  api.use(['coffeescript', 'less', 'templating', 'underscore'], 'client');
+  api.use(['coffeescript', 'less', 'templating', 'underscore', 'jquery'], 'client');
   api.use(['fortawesome:fontawesome'], 'client');
-
 
   api.imply('spiderable', ['client', 'server']);
   api.addFiles([
@@ -21,8 +20,10 @@ Package.onUse(function(api) {
     'client/views/facebook/facebook.coffee',
     'client/views/twitter/twitter.html',
     'client/views/twitter/twitter.coffee',
-    'client/views/google/google.html',
-    'client/views/google/google.coffee'
+    'client/views/googleplus/googleplus.html',
+    'client/views/googleplus/googleplus.coffee',
+    'client/views/pinterest/pinterest.html',
+    'client/views/pinterest/pinterest.coffee'
   ], 'client');
 
   api.export('ShareIt', 'client');

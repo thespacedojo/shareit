@@ -1,11 +1,15 @@
 ShareIt = {
   settings:
     buttons: 'responsive'
-    useFB: true
-    useTwitter: true
-    useGoogle: true
+    sites: [
+      'facebook',
+      'twitter',
+      'google',
+      'pinterest'
+    ]
     classes: "large btn"
     iconOnly: false
+    faSize: ''
     applyColors: true
 
   configure: (hash) ->
@@ -17,6 +21,8 @@ ShareIt = {
       !ShareIt.settings.iconOnly
     applyColors: () ->
       ShareIt.settings.applyColors
+    faSize: () ->
+      ShareIt.settings.faSize
   }
 }
 
