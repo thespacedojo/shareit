@@ -10,7 +10,7 @@ Tinytest.add("ShareIt - {{> shareit}} template renders", function(test) {
 
 Tinytest.add("ShareIt - {{> shareit}} template doesn't throw an exception from the rendered function", function(test) {
   try {
-    Template.shareit_fb.rendered()
+    Template.shareit_facebook.rendered()
   } catch (e) {
     console.log(e)
     test.fail(e)
@@ -19,7 +19,7 @@ Tinytest.add("ShareIt - {{> shareit}} template doesn't throw an exception from t
 
 
 Tinytest.addAsync("ShareIt - {{> shareit}} template renders valid share links", function(test, done) {
-  ShareIt.settings.useFB = true;
+  ShareIt.settings.sites.push 'facebook'
   div = renderToDiv(Template.test_helper_shareit, dataContext)
   // This feels like a punt, should investigate more
   Meteor.setTimeout(function() {
