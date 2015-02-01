@@ -1,6 +1,6 @@
 Template.shareit.helpers
   siteTemplates: () ->
     templates = []
-    for site in ShareIt.settings.sites
+    for site in Object.keys(ShareIt.settings.sites)
         templates.push 'shareit_' + site
     templates
