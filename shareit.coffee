@@ -1,15 +1,22 @@
 ShareIt = {
   settings:
     buttons: 'responsive'
-    useFB: true
-    useTwitter: true
-    useGoogle: true
+    sites: 
+      'facebook':
+        'appId': null
+        'version': 'v2.1'
+      'twitter': {}
+      'googleplus': {}
+      'pinterest': {}
+      
     classes: "large btn"
     iconOnly: false
+    faSize: ''
     applyColors: true
 
   configure: (hash) ->
-    @settings = $.extend(@settings, hash)
+    @settings = $.extend(true, @settings, hash)  
+  
   helpers: {
     classes: () ->
       ShareIt.settings.classes
@@ -17,13 +24,14 @@ ShareIt = {
       !ShareIt.settings.iconOnly
     applyColors: () ->
       ShareIt.settings.applyColors
+    faSize: () ->
+      ShareIt.settings.faSize
   }
 }
 
 @ShareIt = ShareIt
 
 Meteor.startup ->
-
   # Twitter
   window.twttr = do (d = document, s = 'script', id = 'twitter-wjs') ->
     t = undefined
@@ -41,12 +49,17 @@ Meteor.startup ->
     )
 
   # Facebook
-  js = undefined
-  id = "facebook-jssdk"
-  ref = document.getElementsByTagName("script")[0]
-  return  if document.getElementById(id)
-  js = document.createElement("script")
-  js.id = id
-  js.async = true
-  js.src = "//connect.facebook.net/en_US/all.js"
-  ref.parentNode.insertBefore js, ref
+  window.fbAsyncInit = ->
+    FB.init(ShareIt.settings.sites.facebook)
+    
+  ((d, s, id) ->
+    js = undefined
+    fjs = d.getElementsByTagName(s)[0]
+    if d.getElementById(id)
+      return
+    js = d.createElement(s)
+    js.id = id
+    js.src = '//connect.facebook.net/en_US/sdk.js'
+    fjs.parentNode.insertBefore js, fjs
+    return
+  ) document, 'script', 'facebook-jssdk'
