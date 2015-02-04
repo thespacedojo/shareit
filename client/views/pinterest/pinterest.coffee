@@ -1,12 +1,17 @@
 Template.shareit_pinterest.rendered = ->
     return unless @data
 
-    preferred_url = @data.url || location.origin + location.pathname
-    url = encodeURIComponent preferred_url
-
-    href = "http://www.pinterest.com/pin/create/button/?url=#{url}&media=#{@data.media}&description=#{@data.description}"
+    @autorun ->
+        template = Template.instance()
+        data = Template.currentData()
+        
+        preferred_url = data.url || location.origin + location.pathname
+        url = encodeURIComponent preferred_url
+        description = encodeURIComponent data.pinterest?.description || data.description
     
-    @$('.pinterest-share').attr 'href', href
+        href = "http://www.pinterest.com/pin/create/button/?url=#{url}&media=#{data.media}&description=#{description}"
+        
+        template.$('.pinterest-share').attr 'href', href
     
 Template.shareit_pinterest.events
     'click a': (event, template) ->
