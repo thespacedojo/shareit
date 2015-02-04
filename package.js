@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom("METEOR@1.0.2");
   api.use(['coffeescript', 'less', 'templating', 'underscore', 'jquery'], 'client');
-  api.use(['fortawesome:fontawesome@4.3.0'], 'client');
+  api.use(['fortawesome:fontawesome'], 'client');
 
   api.imply('spiderable', ['client', 'server']);
   api.addFiles([
