@@ -1,6 +1,6 @@
 ShareIt = {
   settings:
-    autoInit: false
+    autoInit: true
     buttons: 'responsive'
     sites: 
       'facebook':
@@ -44,7 +44,9 @@ ShareIt = {
 
 @ShareIt = ShareIt
 
-Meteor.startup ->
+ShareIt.init = (hash) ->
+  @settings = $.extend(true, @settings, hash)
+    
   # Twitter
   window.twttr = do (d = document, s = 'script', id = 'twitter-wjs') ->
     t = undefined
@@ -62,6 +64,8 @@ Meteor.startup ->
     )
 
   # Facebook
+  # silence that annoying complaint
+  $('<div id="fb-root"></div>').appendTo 'body'
   if ShareIt.settings.autoInit
     window.fbAsyncInit = ->
       FB.init(ShareIt.settings.sites.facebook)
@@ -77,3 +81,4 @@ Meteor.startup ->
     fjs.parentNode.insertBefore js, fjs
     return
   ) document, 'script', 'facebook-jssdk'
+  

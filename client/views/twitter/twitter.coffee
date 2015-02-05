@@ -24,10 +24,7 @@ Template.shareit_twitter.rendered = ->
         #$('<meta>', { property: 'twitter:site', content: '' }).appendTo 'head'
       
         if data.author
-          author = data.author() if typeof(data.author) is 'function'
-          author ||= data.author
-        if author and author.profile and author.profile.twitter
-          $('<meta>', { property: 'twitter:creator', content: author.profile.twitter }).appendTo 'head'
+          $('<meta>', { property: 'twitter:creator', content: data.author }).appendTo 'head'
       
         description = data.excerpt || data.description || data.summary
         $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
@@ -46,8 +43,8 @@ Template.shareit_twitter.rendered = ->
         text = encodeURIComponent data.twitter?.title || data.title
         href = base + "?url=" + url + "&text=" + text
       
-        if author and author.profile and author.profile.twitter
-          href += "&via=" + author.profile.twitter
+        if data.author
+          href += "&via=" + data.author
       
         template.$(".tw-share").attr "href", href
 
