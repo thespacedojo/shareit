@@ -1,26 +1,3 @@
-This repo is forked from joshowens:shareit. I have made a lot of changes and will be maintaining this until the changes are merged back into http://github.com/meteorclub/shareit. The usage is pretty much the same except for the extensions that I made. Doc will be updated once the changes are settled. 
-
-# New Changes
-  meteor add lovetostrike:shareit
-  
-- You can specify the order of sites by passing in siteOrder array.
-- You can add extra configurations to the sites object. For example,
-```js
-    ShareIt.configure({
-    sites: {                // nested object for extra configurations
-        'facebook': {
-            'appId': null   // if it's null, it would use deprecated sharer.php.
-        },
-        'twitter': {},
-        'googleplus': {},
-        'pinterest': {}
-    }
-```
-- faClass and faSize for font awesome size(fa-lg, fa-1x etc) and font awesome icon style(square etc)
-- added pinterest support, google snippet and facebook share dialog
-  
-# End New Changes
-
 # Share it
 
 I've built social sharing buttons a few times and decided it was time to extract it to a package!  The goal of this package is to do a few things:
@@ -125,7 +102,7 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
   ShareIt.configure({
     sites: {                // nested object for extra configurations
         'facebook': {
-            'appId': null
+            'appId': null	// use sharer.php when it's null, otherwise use share dialog
         },
         'twitter': {},
         'googleplus': {},
@@ -137,7 +114,8 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
                           // Don't put text on the sharing buttons
     applyColors: true,     // boolean (default: true)
                           // apply classes to inherit each social networks background color
-    faSize: ''            // font awesome size
+    faSize: '',            // font awesome size
+    faClass: ''		  // font awesome classes like square
   });
 ```
 If you have valid facebook app id, we recommend you configure it to use Facebook Share Dialog. If no app id is provided, it would use deprecated sharer.php. Example facebook configuration:

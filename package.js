@@ -1,8 +1,8 @@
 Package.describe({
   summary: 'A meteor package that makes social sharing easy',
-  git: 'https://github.com/lovetostrike/shareit',
-  version: '0.4.1',
-  name: "lovetostrike:shareit"
+  git: 'https://github.com/meteorclub/shareit',
+  version: '0.4.0',
+  name: "joshowens:shareit"
 });
 
 Package.onUse(function(api) {
@@ -35,7 +35,7 @@ Package.onTest(function (api) {
     'templating',
     'coffeescript'
     ])
-    api.use('lovetostrike:shareit')
+    api.use('joshowens:shareit')
 
   api.addFiles([
     'tests/client.html',
