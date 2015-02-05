@@ -1,4 +1,4 @@
-This repo is forked from joshowens:shareit. I have made a lot of changes and will be maintaining this until the changes are merged back into http://github.com/meteorclub/shareit. The usage is pretty much the same except for the extensions that I made. 
+This repo is forked from joshowens:shareit. I have made a lot of changes and will be maintaining this until the changes are merged back into http://github.com/meteorclub/shareit. The usage is pretty much the same except for the extensions that I made. Doc will be updated once the changes are settled. 
 
 # New Changes
   meteor add lovetostrike:shareit
