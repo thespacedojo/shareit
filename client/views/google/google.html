@@ -1,6 +1,24 @@
 <template name="shareit_google">
-<a class="{{classes}}{{#if applyColors}} shareit-google-colors{{/if}} google-share" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}"
-    onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-    <i class="fa fa-google-plus"></i>{{#if showText}} Share on Google+{{/if}}
-</a>
+
+
+{{#if useBootstrap}}
+  <a class="{{classes}}{{#if applyColors}} shareit-google-colors{{/if}} google-share" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}"
+      onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+      <i class="fa fa-google-plus"></i>{{#if showText}} Share on Google+{{/if}}
+  </a>
+{{else}}
+
+  {{#if showText}}
+    <a class="google-share ui labeled tiny google plus icon button" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}"
+        onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+      <i class="google plus icon"></i>
+      Share on Google+
+    </a>
+  {{else}}
+    <a class="google-share ui circular small google plus icon button" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
+      <i class="google plus icon"></i>
+    </a>
+  {{/if}}
+
+{{/if}}
 </template>

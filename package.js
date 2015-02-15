@@ -8,8 +8,12 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom("METEOR@0.9.0");
   api.use(['coffeescript', 'less', 'templating', 'underscore'], 'client');
-  api.use(['fortawesome:fontawesome'], 'client');
 
+  // Semantic includes a complete port of Font Awesome designed by Dave Gandy for its standard icon set.
+  // Ref: http://semantic-ui.com/elements/icon.html
+  // Is this the correct way of doint this? Not forcing to include the package
+  // and specify that fortawesome:fontawesome is required for bootstrap users?
+  // api.use(['fortawesome:fontawesome'], 'client');
 
   api.imply('spiderable', ['client', 'server']);
   api.addFiles([

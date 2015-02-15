@@ -7,6 +7,7 @@ ShareIt = {
     classes: "large btn"
     iconOnly: false
     applyColors: true
+    cssFramework: 'boostrap'
 
   configure: (hash) ->
     @settings = $.extend(@settings, hash)
@@ -17,6 +18,10 @@ ShareIt = {
       !ShareIt.settings.iconOnly
     applyColors: () ->
       ShareIt.settings.applyColors
+    useSemantic: () ->
+      return ShareIt.settings.cssFramework == 'semantic'
+    useBootstrap: () ->
+      return ShareIt.settings.cssFramework != 'semantic'
   }
 }
 

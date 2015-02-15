@@ -112,6 +112,7 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
                           // Don't put text on the sharing buttons
     applyColors: true     // boolean (default: true)
                           // apply classes to inherit each social networks background color
+    cssFramework: "bootstrap" // string (default: 'bootstrap'). The other alternative is 'semantic'
   });
 ```
 

@@ -1,5 +1,22 @@
 <template name="shareit_twitter">
+
+  {{#if useBootstrap}}
   <a class="{{classes}}{{#if applyColors}} shareit-twitter-colors{{/if}} tw-share" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
     <i class="fa fa-twitter"></i>{{#if showText}} Share on Twitter{{/if}}
   </a>
+  {{else}}
+
+    {{#if showText}}
+      <a class="tw-share ui labeled tiny twitter icon button" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
+        <i class="twitter icon"></i>
+         Share on Twitter
+      </a>
+    {{else}}
+      <a class="tw-share ui circular small twitter icon button" href="https://twitter.com/intent/tweet?url={{url}}&text={{text}}">
+        <i class="twitter icon"></i>
+      </a>
+    {{/if}}
+
+  {{/if}}
+
 </template>
