@@ -6,15 +6,15 @@ ShareIt = {
       'facebook':
         'appId': null
         'version': 'v2.1'
-        'message': ''
+        'description': ''
       'twitter':
-        'message': ''
+        'description': ''
       'googleplus':
-        'message': ''
+        'description': ''
       'pinterest':
-        'message': ''
+        'description': ''
       'instagram':
-        'message': ''
+        'description': ''
     siteOrder: ['facebook', 'twitter', 'pinterest', 'googleplus', 'instagram']
     classes: "large btn"
     iconOnly: false

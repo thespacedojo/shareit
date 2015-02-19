@@ -26,7 +26,7 @@ Template.shareit_twitter.rendered = ->
         if data.author
           $('<meta>', { property: 'twitter:creator', content: data.author }).appendTo 'head'
       
-        description = data.excerpt || data.description || data.summary
+        description = data.twitter?.description || data.excerpt || data.description || data.summary
         $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
         $('<meta>', { property: 'twitter:title', content: "#{data.title}" }).appendTo 'head'
         $('<meta>', { property: 'twitter:description', content: description }).appendTo 'head'
