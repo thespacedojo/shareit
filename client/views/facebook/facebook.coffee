@@ -1,5 +1,5 @@
 Template.shareit_fb.rendered = ->
-  return unless @data
+  data = @data || {}
 
   $('meta[property^="og:"]').remove()
 
@@ -7,19 +7,19 @@ Template.shareit_fb.rendered = ->
   # OpenGraph tags
   #
 
-  description = @data.excerpt || @data.description || @data.summary
+  description = data.excerpt || data.description || data.summary
 
   $('<meta>', { property: 'og:type', content: 'article' }).appendTo 'head'
   $('<meta>', { property: 'og:site_name', content: location.hostname }).appendTo 'head'
   $('<meta>', { property: 'og:url', content: location.origin + location.pathname }).appendTo 'head'
-  $('<meta>', { property: 'og:title', content: "#{@data.title}" }).appendTo 'head'
+  $('<meta>', { property: 'og:title', content: "#{data.title}" }).appendTo 'head'
   $('<meta>', { property: 'og:description', content: description }).appendTo 'head'
 
-  if @data.thumbnail
-    if typeof @data.thumbnail == "function"
-      img = @data.thumbnail()
+  if data.thumbnail
+    if typeof data.thumbnail == "function"
+      img = data.thumbnail()
     else
-      img = @data.thumbnail
+      img = data.thumbnail
     if img
       if not /^http(s?):\/\/+/.test(img)
         img = location.origin + img
@@ -30,11 +30,11 @@ Template.shareit_fb.rendered = ->
   # Facebook share button
   #
 
-  preferred_url = @data.url || location.origin + location.pathname
+  preferred_url = data.url || location.origin + location.pathname
   url = encodeURIComponent preferred_url
 
   base = "https://www.facebook.com/sharer/sharer.php"
-  title = encodeURIComponent @data.title
+  title = encodeURIComponent data.title
   summary = encodeURIComponent description
   href = base + "?s=100&p[url]=" + url + "&p[title]=" + title + "&p[summary]=" + summary
 

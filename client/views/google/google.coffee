@@ -1,11 +1,10 @@
 Template.shareit_google.rendered = () ->
-  return unless @data
-
+  data = @data || {}
   #
   # Google share button
   #
 
-  preferred_url = @data.url || location.origin + location.pathname
+  preferred_url = data.url || location.origin + location.pathname
   href = "https://plus.google.com/share?url=#{preferred_url}"
   @$(".google-share").attr "href", href
 

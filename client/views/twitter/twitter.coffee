@@ -1,12 +1,12 @@
 Template.shareit_twitter.rendered = ->
-  return unless @data
+  data = @data || {}
   $('meta[property^="twitter:"]').remove()
 
-  if @data.thumbnail
-    if typeof @data.thumbnail == "function"
-      img = @data.thumbnail()
+  if data.thumbnail
+    if typeof data.thumbnail == "function"
+      img = data.thumbnail()
     else
-      img = @data.thumbnail
+      img = data.thumbnail
     if img
       if not /^http(s?):\/\/+/.test(img)
         img = location.origin + img
@@ -19,15 +19,15 @@ Template.shareit_twitter.rendered = ->
   # What should go here?
   #$('<meta>', { property: 'twitter:site', content: '' }).appendTo 'head'
 
-  if @data.author
-    author = @data.author() if typeof(@data.author) is 'function'
-    author ||= @data.author
+  if data.author
+    author = data.author() if typeof(data.author) is 'function'
+    author ||= data.author
   if author and author.profile and author.profile.twitter
     $('<meta>', { property: 'twitter:creator', content: author.profile.twitter }).appendTo 'head'
 
-  description = @data.excerpt || @data.description || @data.summary
+  description = data.excerpt || data.description || data.summary
   $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
-  $('<meta>', { property: 'twitter:title', content: "#{@data.title}" }).appendTo 'head'
+  $('<meta>', { property: 'twitter:title', content: "#{data.title}" }).appendTo 'head'
   $('<meta>', { property: 'twitter:description', content: description }).appendTo 'head'
   $('<meta>', { property: 'twitter:image:src', content: img }).appendTo 'head'
 
@@ -35,12 +35,14 @@ Template.shareit_twitter.rendered = ->
   # Twitter share button
   #
 
-  preferred_url = @data.url || location.origin + location.pathname
+  preferred_url = data.url || location.origin + location.pathname
   url = encodeURIComponent preferred_url
 
   base = "https://twitter.com/intent/tweet"
-  text = encodeURIComponent @data.title
-  href = base + "?url=" + url + "&text=" + text
+  href = base + "?url=" + url
+
+  if data.title
+    href += "&text=" + encodeURIComponent data.title
 
   if author and author.profile and author.profile.twitter
     href += "&via=" + author.profile.twitter
