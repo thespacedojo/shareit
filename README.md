@@ -100,20 +100,36 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
 
 ```js
   ShareIt.configure({
-    useFB: true,          // boolean (default: true)
-                          // Whether to show the Facebook button
-    useTwitter: true,     // boolean (default: true)
-                          // Whether to show the Twitter button
-    useGoogle: true,      // boolean (default: true)
-                          // Whether to show the Google+ button
+    sites: {                // nested object for extra configurations
+        'facebook': {
+            'appId': null	// use sharer.php when it's null, otherwise use share dialog
+        },
+        'twitter': {},
+        'googleplus': {},
+        'pinterest': {}
+    }
     classes: "large btn", // string (default: 'large btn')
                           // The classes that will be placed on the sharing buttons, bootstrap by default.
     iconOnly: false,      // boolean (default: false)
                           // Don't put text on the sharing buttons
-    applyColors: true     // boolean (default: true)
+    applyColors: true,     // boolean (default: true)
                           // apply classes to inherit each social networks background color
+    faSize: '',            // font awesome size
+    faClass: ''		  // font awesome classes like square
   });
 ```
+If you have valid facebook app id, we recommend you configure it to use Facebook Share Dialog. If no app id is provided, it would use deprecated sharer.php. Example facebook configuration:
+
+```js
+    ShareIt.configure({
+        sites: {
+            'facebook': {
+                'appId': YOUR_APP_ID
+            }
+        }
+    });
+```
+
 
 ## Roadmap
 
