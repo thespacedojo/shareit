@@ -1,22 +1,7 @@
 <template name="shareit_fb">
 
-  {{#if useBootstrap}}
-  <a target="_blank" class="{{classes}}{{#if applyColors}} shareit-facebook-colors{{/if}} fb-share" href="#">
-    <i class="fa fa-facebook"></i>{{#if showText}} Share on Facebook{{/if}}
-  </a>
-  {{else}}
-
-    {{#if showText}}
-      <a class="fb-share ui labeled tiny facebook icon button" target="_blank" href="#">
-        <i class="facebook icon"></i>
-         Share on Facebook
-      </a>
-    {{else}}
-      <a class="fb-share ui circular small facebook icon button" target="_blank" href="#">
-        <i class="facebook icon"></i>
-      </a>
-    {{/if}}
-
-  {{/if}}
+	<a target="_blank" class="{{linkClasses 'facebook'}} fb-share" href="#">
+		<i class="{{iconClasses 'facebook'}}"></i>{{#if showText}} Share on Facebook{{/if}}
+	</a>
 
 </template>
