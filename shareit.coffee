@@ -2,7 +2,7 @@ ShareIt = {
   settings:
     autoInit: true
     buttons: 'responsive'
-    sites: 
+    sites:
       'facebook':
         'appId': null
         'version': 'v2.1'
@@ -24,7 +24,13 @@ ShareIt = {
 
   configure: (hash) ->
     @settings = $.extend(true, @settings, hash)
-  
+
+  defaultDataContext: () ->
+    {
+      url: location.origin + location.pathname,
+      title: document.title
+    }
+
   helpers: {
     classes: () ->
       ShareIt.settings.classes
@@ -46,7 +52,7 @@ ShareIt = {
 
 ShareIt.init = (hash) ->
   @settings = $.extend(true, @settings, hash)
-    
+
   # Twitter
   window.twttr = do (d = document, s = 'script', id = 'twitter-wjs') ->
     t = undefined
@@ -69,7 +75,7 @@ ShareIt.init = (hash) ->
   if ShareIt.settings.autoInit
     window.fbAsyncInit = ->
       FB.init(ShareIt.settings.sites.facebook)
-    
+
   ((d, s, id) ->
     js = undefined
     fjs = d.getElementsByTagName(s)[0]
@@ -81,4 +87,3 @@ ShareIt.init = (hash) ->
     fjs.parentNode.insertBefore js, fjs
     return
   ) document, 'script', 'facebook-jssdk'
-  

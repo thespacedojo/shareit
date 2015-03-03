@@ -1,10 +1,8 @@
 Template.shareit_facebook.rendered = ->
-    return unless @data
-
     @autorun ->
-        template = Template.instance()        
-        data = Template.currentData()
-        
+        template = Template.instance()
+        data = Template.currentData() || ShareIt.defaultDataContext()
+
         $('meta[property^="og:"]').remove()
         #
         # OpenGraph tags
@@ -17,7 +15,7 @@ Template.shareit_facebook.rendered = ->
         $('<meta>', { property: 'og:url', content: url }).appendTo 'head'
         $('<meta>', { property: 'og:title', content: title }).appendTo 'head'
         $('<meta>', { property: 'og:description', content: description }).appendTo 'head'
-        
+
         if data.thumbnail
             if typeof data.thumbnail == "function"
                 img = data.thumbnail()
@@ -26,9 +24,9 @@ Template.shareit_facebook.rendered = ->
         if img
             if not /^http(s?):\/\/+/.test(img)
                 img = location.origin + img
-                
+
         $('<meta>', { property: 'og:image', content: img }).appendTo 'head'
-        
+
         if ShareIt.settings.sites.facebook.appId?
             template.$('.fb-share').click (e) ->
                 e.preventDefault()
@@ -45,9 +43,9 @@ Template.shareit_facebook.rendered = ->
             href = base + "?s=100&p[url]=" + url + "&p[title]=" + title + "&p[summary]=" + summary
             if img
                 href += "&p[images][0]=" + encodeURIComponent img
-    
+
             template.$(".fb-share").attr "href", href
-            
+
     return
-    
+
 Template.shareit_facebook.helpers(ShareIt.helpers)
