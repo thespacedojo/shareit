@@ -107,7 +107,7 @@ Somewhere in your client (not server) code you can configure ShareIt.  This is c
         'twitter': {},
         'googleplus': {},
         'pinterest': {}
-    }
+    },
     classes: "large btn", // string (default: 'large btn')
                           // The classes that will be placed on the sharing buttons, bootstrap by default.
     iconOnly: false,      // boolean (default: false)
