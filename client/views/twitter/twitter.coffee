@@ -4,7 +4,10 @@ Template.shareit_twitter.rendered = ->
     @autorun ->
         template = Template.instance()
         data = Template.currentData()
-        $('meta[property^="twitter:"]').remove()
+        noMeta=data.url && (data.url!=(location.origin + location.pathname))
+
+        if not noMeta 
+            $('meta[property^="twitter:"]').remove()
       
         if data.thumbnail
           if typeof data.thumbnail == "function"
@@ -19,18 +22,24 @@ Template.shareit_twitter.rendered = ->
         # Twitter cards
         #
       
-        $('<meta>', { property: 'twitter:card', content: 'summary' }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { property: 'twitter:card', content: 'summary' }).appendTo 'head'
         # What should go here?
         #$('<meta>', { property: 'twitter:site', content: '' }).appendTo 'head'
       
         if data.author
-          $('<meta>', { property: 'twitter:creator', content: data.author }).appendTo 'head'
+          if not noMeta 
+              $('<meta>', { property: 'twitter:creator', content: data.author }).appendTo 'head'
       
         description = data.twitter?.description || data.excerpt || data.description || data.summary
-        $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
-        $('<meta>', { property: 'twitter:title', content: "#{data.title}" }).appendTo 'head'
-        $('<meta>', { property: 'twitter:description', content: description }).appendTo 'head'
-        $('<meta>', { property: 'twitter:image', content: img }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { property: 'twitter:url', content: location.origin + location.pathname }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { property: 'twitter:title', content: "#{data.title}" }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { property: 'twitter:description', content: description }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { property: 'twitter:image', content: img }).appendTo 'head'
       
         #
         # Twitter share button

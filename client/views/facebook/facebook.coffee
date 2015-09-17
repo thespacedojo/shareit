@@ -4,19 +4,29 @@ Template.shareit_facebook.rendered = ->
     @autorun ->
         template = Template.instance()        
         data = Template.currentData()
-        
-        $('meta[property^="og:"]').remove()
+        # console.log(data)
+
+        noMeta=data.url && (data.url!=(location.origin + location.pathname))
+
+        if not noMeta
+            $('meta[property^="og:"]').remove()
         #
         # OpenGraph tags
         #
         description = data.facebook?.description || data.excerpt || data.description || data.summary
         url = data.url || location.origin + location.pathname
         title = data.title
-        $('<meta>', { property: 'og:type', content: 'article' }).appendTo 'head'
-        $('<meta>', { property: 'og:site_name', content: location.hostname }).appendTo 'head'
-        $('<meta>', { property: 'og:url', content: url }).appendTo 'head'
-        $('<meta>', { property: 'og:title', content: title }).appendTo 'head'
-        $('<meta>', { property: 'og:description', content: description }).appendTo 'head'
+        
+        if not noMeta
+            $('<meta>', { property: 'og:type', content: 'article' }).appendTo 'head'
+        if not noMeta
+            $('<meta>', { property: 'og:site_name', content: location.hostname }).appendTo 'head'
+        if not noMeta
+            $('<meta>', { property: 'og:url', content: url }).appendTo 'head'
+        if not noMeta
+            $('<meta>', { property: 'og:title', content: title }).appendTo 'head'
+        if not noMeta
+            $('<meta>', { property: 'og:description', content: description }).appendTo 'head'
         
         if data.thumbnail
             if typeof data.thumbnail == "function"
@@ -27,7 +37,8 @@ Template.shareit_facebook.rendered = ->
             if not /^http(s?):\/\/+/.test(img)
                 img = location.origin + img
                 
-        $('<meta>', { property: 'og:image', content: img }).appendTo 'head'
+        if not noMeta
+            $('<meta>', { property: 'og:image', content: img }).appendTo 'head'
         
         if ShareIt.settings.sites.facebook.appId?
             template.$('.fb-share').click (e) ->

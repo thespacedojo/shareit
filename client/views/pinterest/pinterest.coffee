@@ -4,6 +4,7 @@ Template.shareit_pinterest.rendered = ->
     @autorun ->
         template = Template.instance()
         data = Template.currentData()
+        noMeta=data.url && (data.url!=(location.origin + location.pathname))
         
         preferred_url = data.url || location.origin + location.pathname
         url = encodeURIComponent preferred_url

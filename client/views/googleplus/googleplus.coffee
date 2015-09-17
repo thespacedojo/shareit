@@ -4,7 +4,10 @@ Template.shareit_googleplus.rendered = () ->
     @autorun ->
         template = Template.instance()
         data = Template.currentData()
-        $('meta[itemscope]').remove()
+        noMeta=data.url && (data.url!=(location.origin + location.pathname))
+
+        if not noMeta 
+            $('meta[itemscope]').remove()
         
         #
         # Schema tags
@@ -13,10 +16,14 @@ Template.shareit_googleplus.rendered = () ->
         url = data.url || location.origin + location.pathname
         title = data.title
         itemtype = data.googleplus?.itemtype || 'Article'
-        $('html').attr('itemscope', '').attr('itemtype', "http://schema.org/#{itemtype}")
-        $('<meta>', { itemprop: 'name', content: location.hostname }).appendTo 'head'
-        $('<meta>', { itemprop: 'url', content: url }).appendTo 'head'
-        $('<meta>', { itemprop: 'description', content: description }).appendTo 'head'
+        if not noMeta 
+            $('html').attr('itemscope', '').attr('itemtype', "http://schema.org/#{itemtype}")
+        if not noMeta
+            $('<meta>', { itemprop: 'name', content: location.hostname }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { itemprop: 'url', content: url }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { itemprop: 'description', content: description }).appendTo 'head'
         
         if data.thumbnail
             if typeof data.thumbnail == "function"
@@ -27,7 +34,8 @@ Template.shareit_googleplus.rendered = () ->
             if not /^http(s?):\/\/+/.test(img)
                 img = location.origin + img
                 
-        $('<meta>', { itemprop: 'image', content: img }).appendTo 'head'
+        if not noMeta 
+            $('<meta>', { itemprop: 'image', content: img }).appendTo 'head'
         #
         # Google share button
         #
