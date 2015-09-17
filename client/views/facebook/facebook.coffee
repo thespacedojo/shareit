@@ -7,7 +7,8 @@ Template.shareit_facebook.rendered = ->
         # console.log(data)
 
         noMeta=data.url && (data.url!=(location.origin + location.pathname))
-
+        # console.log(data.url)
+        # console.log((location.origin + location.pathname))
         if not noMeta
             $('meta[property^="og:"]').remove()
         #
