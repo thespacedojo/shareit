@@ -95,3 +95,31 @@ ShareIt.init = function(hash) {
     fjs.parentNode.insertBefore(js, fjs);
   })(document, 'script', 'facebook-jssdk');
 };
+
+ShareIt.facebookMeta = function(description, url, title, img) {
+  $('meta[property^="og:"]').remove();
+  $('<meta>', {
+    property: 'og:type',
+    content: 'article'
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'og:site_name',
+    content: location.hostname
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'og:url',
+    content: url
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'og:title',
+    content: title
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'og:description',
+    content: description
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'og:image',
+    content: img
+  }).appendTo('head');
+}
