@@ -122,4 +122,36 @@ ShareIt.facebookMeta = function(description, url, title, img) {
     property: 'og:image',
     content: img
   }).appendTo('head');
-}
+};
+
+ShareIt.twitterMeta=function(author,title,description,img){
+  $('meta[property^="twitter:"]').remove();
+  $('<meta>', {
+    property: 'twitter:card',
+    content: 'summary'
+  }).appendTo('head');
+  if (author) {
+    $('<meta>', {
+      property: 'twitter:creator',
+      content: author
+    }).appendTo('head');
+  }
+
+  $('<meta>', {
+    property: 'twitter:url',
+    content: location.origin + location.pathname
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'twitter:title',
+    content: "" + title
+  }).appendTo('head');
+
+  $('<meta>', {
+    property: 'twitter:description',
+    content: description
+  }).appendTo('head');
+  $('<meta>', {
+    property: 'twitter:image',
+    content: img
+  }).appendTo('head');
+};

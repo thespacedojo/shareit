@@ -6,7 +6,6 @@ Template.shareit_twitter.rendered = function() {
     var base, data, description, href, img, preferred_url, ref, ref1, template, text, url;
     template = Template.instance();
     data = Template.currentData();
-    $('meta[property^="twitter:"]').remove();
     if (data.thumbnail) {
       if (typeof data.thumbnail === "function") {
         img = data.thumbnail();
@@ -19,33 +18,8 @@ Template.shareit_twitter.rendered = function() {
         }
       }
     }
-    $('<meta>', {
-      property: 'twitter:card',
-      content: 'summary'
-    }).appendTo('head');
-    if (data.author) {
-      $('<meta>', {
-        property: 'twitter:creator',
-        content: data.author
-      }).appendTo('head');
-    }
     description = ((ref = data.twitter) != null ? ref.description : void 0) || data.excerpt || data.description || data.summary;
-    $('<meta>', {
-      property: 'twitter:url',
-      content: location.origin + location.pathname
-    }).appendTo('head');
-    $('<meta>', {
-      property: 'twitter:title',
-      content: "" + data.title
-    }).appendTo('head');
-    $('<meta>', {
-      property: 'twitter:description',
-      content: description
-    }).appendTo('head');
-    $('<meta>', {
-      property: 'twitter:image',
-      content: img
-    }).appendTo('head');
+    ShareIt.twitterMeta(data.author,data.title,description,img);
     preferred_url = data.url || location.origin + location.pathname;
     url = encodeURIComponent(preferred_url);
     base = "https://twitter.com/intent/tweet";
