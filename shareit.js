@@ -1,4 +1,3 @@
-
 ShareIt = {
   settings: {
     autoInit: true,
@@ -7,19 +6,24 @@ ShareIt = {
       'facebook': {
         'appId': null,
         'version': 'v2.1',
-        'description': ''
+        'description': '',
+        'use': true
       },
       'twitter': {
-        'description': ''
+        'description': '',
+        'use': true
       },
       'googleplus': {
-        'description': ''
+        'description': '',
+        'use': true
       },
       'pinterest': {
-        'description': ''
+        'description': '',
+        'use': true
       },
       'instagram': {
-        'description': ''
+        'description': '',
+        'use': true
       }
     },
     siteOrder: ['facebook', 'twitter', 'pinterest', 'googleplus', 'instagram'],

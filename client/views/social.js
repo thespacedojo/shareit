@@ -5,7 +5,7 @@ Template.shareit.helpers({
     ref = ShareIt.settings.siteOrder;
     for (i = 0, len = ref.length; i < len; i++) {
       site = ref[i];
-      if (ShareIt.settings.sites[site] != null) {
+      if (ShareIt.settings.sites[site] != null && ShareIt.settings.sites[site].use) {
         templates.push('shareit_' + site);
       }
     }
