@@ -27,7 +27,13 @@ ShareIt = {
     iconOnly: false,
     faSize: '',
     faClass: '',
-    applyColors: true
+    applyColors: true,
+    titles: {
+      'facebook': 'Share on Facebook',
+      'googleplus': 'Share on Google+',
+      'pinterest': 'Share on Pinterest',
+      'twitter': 'Share on Twitter'
+    }
   },
   configure: function(hash) {
     return this.settings = $.extend(true, this.settings, hash);
