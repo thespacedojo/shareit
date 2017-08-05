@@ -1,6 +1,6 @@
 <template name="shareit_googleplus">
 <a class="{{classes}}{{#if applyColors}} shareit-google-colors{{/if}} googleplus-share" href="https://plus.google.com/share?url=#{url}"
     onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-    <i class="fa fa-google-plus{{faClass}} {{faSize}}"></i>{{#if showText}} Share on Google+{{/if}}
+    <i class="fa fa-google-plus{{faClass}} {{faSize}}"></i>{{#if showText}} {{titleShareIt "googleplus"}} {{/if}}
 </a>
 </template>

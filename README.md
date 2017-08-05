@@ -130,6 +130,18 @@ If you have valid facebook app id, we recommend you configure it to use Facebook
     });
 ```
 
+## I18n
+
+```js
+    ShareIt.configure({
+        titles: {
+          'facebook': function() {return TAPi18n.__('Share on Facebook');},
+          'googleplus': function() {return TAPi18n.__('Share on Google+');},
+          'pinterest': function() {return TAPi18n.__('Share on Pinterest');},
+          'twitter': function() {return TAPi18n.__('Share on Twitter');}
+        }
+    });
+```
 
 ## Roadmap
 
