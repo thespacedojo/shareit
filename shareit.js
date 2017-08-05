@@ -61,6 +61,10 @@ ShareIt = {
   }
 };
 
+Template.registerHelper('titleShareIt', function(name) {
+    return typeof(ShareIt.settings.titles[name]) == "function" ? ShareIt.settings.titles[name]() : ShareIt.settings.titles[name];
+});
+
 ShareIt.init = function(hash) {
   this.settings = $.extend(true, this.settings, hash);
   window.twttr = (function(d, s, id) {
